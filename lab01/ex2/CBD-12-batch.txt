@@ -1,0 +1,16 @@
+SET city Aveiro
+GET city
+TTL city
+EXPIRE city 60
+TTL city
+PERSIST city
+EXISTS city
+TYPE city
+SET country Portugal
+GET country
+MGET city country
+MGET city country continent
+DEL city
+DEL country
+EXISTS city
+EXISTS country

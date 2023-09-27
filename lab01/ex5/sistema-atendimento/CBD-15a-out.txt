@@ -1,0 +1,114 @@
+:~/CBD/lab01/ex5/sistema-atendimento $ mvn exec:java -Dexec.mainClass="com.pt.ua.SistemaAtendimento"
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.pt.ua:sistema-atendimento >--------------------
+[INFO] Building sistema-atendimento 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ sistema-atendimento ---
+Type in your username: user
+
+Type in your product request ('Enter' to quit): manga
+
+Type in your product request ('Enter' to quit): uva
+
+Type in your product request ('Enter' to quit): morango
+
+Type in your product request ('Enter' to quit): lapis
+
+Type in your product request ('Enter' to quit): caneta
+
+Type in your product request ('Enter' to quit): carne
+Maximum number of requests reached for this user! Closing session...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.498 s
+[INFO] Finished at: 2023-09-27T20:37:15+01:00
+[INFO] ------------------------------------------------------------------------
+
+
+
+:~/CBD/lab01/ex5/sistema-atendimento $ mvn exec:java -Dexec.mainClass="com.pt.ua.SistemaAtendimento" 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.pt.ua:sistema-atendimento >--------------------
+[INFO] Building sistema-atendimento 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ sistema-atendimento ---
+Type in your username: user2
+
+Type in your product request ('Enter' to quit): carne
+
+Type in your product request ('Enter' to quit): agua
+
+Type in your product request ('Enter' to quit): sumo
+
+Type in your product request ('Enter' to quit): bolacha
+
+Type in your product request ('Enter' to quit): cereal
+
+Type in your product request ('Enter' to quit): bolo
+Maximum number of requests reached for this user! Closing session...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.751 s
+[INFO] Finished at: 2023-09-27T20:37:38+01:00
+[INFO] ------------------------------------------------------------------------
+
+
+
+:~/CBD/lab01/ex5/sistema-atendimento $ mvn exec:java -Dexec.mainClass="com.pt.ua.SistemaAtendimento" 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.pt.ua:sistema-atendimento >--------------------
+[INFO] Building sistema-atendimento 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ sistema-atendimento ---
+Type in your username: user
+
+Type in your product request ('Enter' to quit): detergente
+Maximum number of requests reached for this user! Closing session...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.613 s
+[INFO] Finished at: 2023-09-27T20:37:47+01:00
+[INFO] ------------------------------------------------------------------------
+
+
+:~/CBD/lab01/ex5/sistema-atendimento $ mvn exec:java -Dexec.mainClass="com.pt.ua.SistemaAtendimento" 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.pt.ua:sistema-atendimento >--------------------
+[INFO] Building sistema-atendimento 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ sistema-atendimento ---
+Type in your username: user
+
+Type in your product request ('Enter' to quit): agua
+
+Type in your product request ('Enter' to quit): fino
+
+Type in your product request ('Enter' to quit): sumo
+
+Type in your product request ('Enter' to quit): carne
+
+Type in your product request ('Enter' to quit): peixe
+
+Type in your product request ('Enter' to quit): bacalhau
+Maximum number of requests reached for this user! Closing session...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.948 s
+[INFO] Finished at: 2023-09-27T20:40:24+01:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,13 @@
+help
+quit
+ping
+quit
+SET name ABC
+GET name
+HMSET user:1 username maria
+EXISTS name
+TTL name
+HMSET user:1 username maria password 1234
+tutorialspoint points 200
+HMSET
+quit

@@ -1,0 +1,24 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.pt.ua:autocomplete-csv >---------------------
+[INFO] Building autocomplete-csv 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ autocomplete-csv ---
+Search for ('Enter' to quit): Maria
+[Maria, Mariana, Mariam, Mariano, Mariama, Marianna, Mariame, Mariah, MariaLuísa]
+Search for ('Enter' to quit): San
+[Santiago, Sandro, Sandra, Sancho, Santhiago, Sanuthi, Sante, Sanoel, Sanjida, Sania, Sandy, Sancha, Sanae]
+Search for ('Enter' to quit): Viv
+[Viviane, Viviana, Vivian, Vivianne]
+Search for ('Enter' to quit): Joa
+[Joana, Joaquim, Joabe, Joaquina, Joaninha]
+Search for ('Enter' to quit): Hen
+[Henrique, Henry, Henzo, Henrico, Henri, Henock, Hendra]
+Search for ('Enter' to quit): [INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.100 s
+[INFO] Finished at: 2023-09-27T14:27:27+01:00
+[INFO] ------------------------------------------------------------------------

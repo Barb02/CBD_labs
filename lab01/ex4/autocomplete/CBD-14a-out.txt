@@ -1,0 +1,24 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.pt.ua:autocomplete >-----------------------
+[INFO] Building autocomplete 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ autocomplete ---
+Search for ('Enter' to quit): susann
+[susann, susanna, susannah, susanne]
+Search for ('Enter' to quit): zora
+[zora, zorah, zorana]
+Search for ('Enter' to quit): ara
+[ara, arabel, arabela, arabele, arabella, arabelle]
+Search for ('Enter' to quit): ore
+[orel, orelee, orelia, orelie, orella, orelle]
+Search for ('Enter' to quit): hann
+[hanna, hannah, hanni, hannie, hannis, hanny]
+Search for ('Enter' to quit): [INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.130 s
+[INFO] Finished at: 2023-09-27T14:23:00+01:00
+[INFO] ------------------------------------------------------------------------
