@@ -111,6 +111,7 @@ db.restaurants.find(
 {}, { restaurant_id: 1, nome: 1, localidade: 1, gastronomia: 1}
 );
 
+Resultado:
 {
     "_id": {
       "$oid": "6515461977b61a5e6bf13fb0"
@@ -186,11 +187,15 @@ db.restaurants.find(
 
 db.restaurants.countDocuments({ localidade: "Bronx" })
 
+Resultado:
 309
 
 // 5. Apresente os primeiros 15 restaurantes localizados no Bronx, ordenados por
 ordem crescente de nome.
 
+db.restaurants.find({},{_id: 0, nome: 1}).limit(15).sort({nome: 1})
+
+Resultado:
 [
   {
     "nome": "(Lewis Drug Store) Locanda Vini E Olii"
@@ -247,6 +252,7 @@ db.restaurants.find({
       }
 })
 
+Resultado:
 [
   {
     "_id": {
@@ -486,6 +492,7 @@ db.restaurants.find({
       }
   })
 
+Resultado:
 [
   {
     "_id": {
@@ -729,6 +736,7 @@ db.restaurants.find({
     "address.coord.0": { $lt: -95.7 }
 })
 
+Resultado:
 [
   {
     "_id": {
@@ -912,6 +920,7 @@ db.restaurants.find({
     gastronomia: { $ne: "American" }, "address.coord.0": { $lt: -65 }, "grades.score" : {$gt: 70}
 })
 
+Resultado:
 {
     "_id": {
       "$oid": "6515461977b61a5e6bf141b3"
@@ -1119,6 +1128,7 @@ começam por "Wil".
 
 db.restaurants.find({nome: {$regex: "^Wil"}}, {restaurant_id: 1, nome: 1, localidade: 1, gastronomia: 1})
 
+Resultado:
 [
   {
     "_id": {
@@ -1157,6 +1167,7 @@ db.restaurants.find(
     {_id: 0, nome: 1, localidade: 1, gastronomia: 1}
 )
 
+Resultado:
 [
   {
     "localidade": "Bronx",
@@ -1268,6 +1279,7 @@ db.restaurants.find(
     {_id: 0, restaurant_id: 1, nome: 1, localidade: 1, gastronomia: 1}
 )
 
+Resultado:
 {
     "localidade": "Brooklyn",
     "gastronomia": "American",
@@ -1329,6 +1341,7 @@ db.restaurants.find(
     }
 )
 
+Resultado:
 [
   {
     "localidade": "Brooklyn",
@@ -1455,6 +1468,7 @@ db.restaurants.find(
     }
 )
 
+Resultado:
 [
   {
     "grades": [
@@ -1704,6 +1718,7 @@ db.restaurants.find(
     }
 )
 
+Resultado:
 [
   {
     "grades": [
@@ -1763,6 +1778,7 @@ db.restaurants.find(
     }
 )
 
+Resultado:
 [
   {
     "address": {
@@ -1863,6 +1879,7 @@ crescente da gastronomia e, em segundo, por ordem decrescente de localidade.
 
 db.restaurants.find({}, {_id: 0, nome: 1, localidade: 1, gastronomia: 1}).sort({gastronomia:1, localidade: -1})
 
+Resultado:
 [
   {
     "localidade": "Manhattan",
@@ -1979,6 +1996,7 @@ db.restaurants.find(
     }
 ).sort({gastronomia: -1})
 
+Resultado:
 {
     "localidade": "Brooklyn",
     "gastronomia": "Vegetarian",
@@ -2081,6 +2099,7 @@ db.restaurants.aggregate([
     }
 ])
 
+Resultado:
 [
   {
     "numGrades": 18142
@@ -2115,6 +2134,7 @@ db.restaurants.aggregate([
     }
 ])
 
+Resultado:
 [
   {
     "nome": "Fuji Bakery",
@@ -2152,7 +2172,7 @@ db.restaurants.aggregate([
     }
 ]).sort({diaDaSemana: 1})
 
-
+Resultado:
 [
   {
     "numGrades": 7,
@@ -2203,6 +2223,7 @@ db.restaurants.aggregate([
     }
 ])
 
+Resultado:
 [
   {
     "totalRestaurantes": 158,
@@ -2262,7 +2283,7 @@ db.restaurants.aggregate([
     }
   ])
 
-
+Resultado:
 [
   {
     "_id": {
@@ -2299,6 +2320,7 @@ db.restaurants.aggregate([
     }
 ])
 
+Resultado:
 [
   {
     "totalGastronomias": 4
@@ -2312,7 +2334,7 @@ dos restaurantes com score médio superior a 30 desde 1-Jan-2014.
 
 db.restaurants.aggregate([
     {
-        $unwind: "$grades" // separar cada elemento do array em um objeto (unwind é mais eficiente q o metodo anterior nesse caso)
+        $unwind: "$grades"
     },
     {
         $match: {
@@ -2341,7 +2363,7 @@ db.restaurants.aggregate([
     }
 ])
 
-
+Resultado:
 [
   {
     "_id": {
@@ -2502,5 +2524,421 @@ db.restaurants.aggregate([
     "avgScore": 38,
     "numGrades": 1,
     "nome": "Legend'S Pub"
+  }
+]
+
+
+// 26. Indique o número de restaurante por gastronomia presentes no Brooklyn
+
+db.restaurants.aggregate([
+    {
+        $match: { 
+            localidade: "Brooklyn"
+        }
+    },
+    {
+        $group: {
+          _id: "$gastronomia",
+          num: {$sum: 1}
+        }
+    }
+])
+
+Resultado:
+[
+  {
+    "_id": "Donuts",
+    "num": 11
+  },
+  {
+    "_id": "Indonesian",
+    "num": 1
+  },
+  {
+    "_id": "Café/Coffee/Tea",
+    "num": 20
+  },
+  {
+    "_id": "Mexican",
+    "num": 16
+  },
+  {
+    "_id": "Tex-Mex",
+    "num": 2
+  },
+  {
+    "_id": "Pancakes/Waffles",
+    "num": 1
+  },
+  {
+    "_id": "Spanish",
+    "num": 11
+  },
+  {
+    "_id": "Polish",
+    "num": 7
+  },
+  {
+    "_id": "Hamburgers",
+    "num": 35
+  },
+  {
+    "_id": "Pizza",
+    "num": 72
+  },
+  {
+    "_id": "Bakery",
+    "num": 29
+  },
+  {
+    "_id": "Middle Eastern",
+    "num": 2
+  },
+  {
+    "_id": "Chicken",
+    "num": 6
+  },
+  {
+    "_id": "Continental",
+    "num": 1
+  },
+  {
+    "_id": "Asian",
+    "num": 1
+  },
+  {
+    "_id": "Korean",
+    "num": 1
+  },
+  {
+    "_id": "Egyptian",
+    "num": 1
+  },
+  {
+    "_id": "Pizza/Italian",
+    "num": 42
+  },
+  {
+    "_id": "Chinese/Japanese",
+    "num": 1
+  },
+  {
+    "_id": "Bagels/Pretzels",
+    "num": 4
+  }
+]
+
+
+// 27. Na área geográfica delimitada pelas coordenadas:
+-73.9 < lat < -73
+40.5 < long < 41
+Indique a quantidade de restaurantes que contém "food" ou "Food" no nome
+e os ordene de forma ascendente pelo número de "building"
+
+db.restaurants.find(
+    {
+        "address.coord.0": {$gt: -73.9, $lt: -73},
+        "address.coord.1": {$gt: 40.5, $lt: 41},
+        $or: [{ nome: {$regex: "food"} }, { nome: {$regex: "Food"}}]
+    },
+    {_id: 0, nome:1, address: 1}
+).sort({"address.building": 1})
+
+Resultado:
+[
+  {
+    "address": {
+      "building": "112-10",
+      "coord": [
+        -73.764287,
+        40.700352
+      ],
+      "rua": "Farmers Boulevard",
+      "zipcode": "11412"
+    },
+    "nome": "J & C Seafood"
+  },
+  {
+    "address": {
+      "building": "135-32",
+      "coord": [
+        -73.802404,
+        40.674176
+      ],
+      "rua": "Rockaway Boulevard",
+      "zipcode": "11420"
+    },
+    "nome": "The Food Hut"
+  },
+  {
+    "address": {
+      "building": "161",
+      "coord": [
+        -73.89846779999999,
+        40.8617606
+      ],
+      "rua": "East  188 Street",
+      "zipcode": "10468"
+    },
+    "nome": "Fordham Fried Chicken & Sea Food"
+  },
+  {
+    "address": {
+      "building": "2468",
+      "coord": [
+        -73.897185,
+        40.8615512
+      ],
+      "rua": "Grand Concourse",
+      "zipcode": "10458"
+    },
+    "nome": "Fordham Seafood And Chicken"
+  },
+  {
+    "address": {
+      "building": "24919",
+      "coord": [
+        -73.7342245,
+        40.7722447
+      ],
+      "rua": "Northen Blvd",
+      "zipcode": "11363"
+    },
+    "nome": "Marathon Food Shop"
+  },
+  {
+    "address": {
+      "building": "347478",
+      "coord": [
+        -73.82034759999999,
+        40.824629
+      ],
+      "rua": "East Tremont Avenue",
+      "zipcode": "10465"
+    },
+    "nome": "Loui Seafood"
+  },
+  {
+    "address": {
+      "building": "355",
+      "coord": [
+        -73.8720748,
+        40.8069431
+      ],
+      "rua": "Food Center Drive",
+      "zipcode": "10474"
+    },
+    "nome": "Snack Bar (Located Between A-B Between Fancy Food And Masters)"
+  },
+  {
+    "address": {
+      "building": "3740",
+      "coord": [
+        -73.8630457,
+        40.8825598
+      ],
+      "rua": "White Plains Road",
+      "zipcode": "10467"
+    },
+    "nome": "Roca Tone Seafood Restaurant"
+  },
+  {
+    "address": {
+      "building": "459",
+      "coord": [
+        -73.7897247,
+        40.8509777
+      ],
+      "rua": "City Island Avenue",
+      "zipcode": "10464"
+    },
+    "nome": "Seafood  City"
+  },
+  {
+    "address": {
+      "building": "8278",
+      "coord": [
+        -73.88143509999999,
+        40.7412552
+      ],
+      "rua": "Broadway",
+      "zipcode": "11373"
+    },
+    "nome": "Pho Bac Vietnamese Seafood Cuisine"
+  },
+  {
+    "address": {
+      "building": "9904",
+      "coord": [
+        -73.8567826,
+        40.7325318
+      ],
+      "rua": "63 Road",
+      "zipcode": "11374"
+    },
+    "nome": "Tandoori Food & Bakery"
+  }
+]
+
+
+// 28. Indique o melhor (maior scoreAvg) restaurante italiano (Pizza/Italian) do Bronx
+
+db.restaurants.aggregate([
+    {
+        $match: { gastronomia: "Pizza/Italian", localidade: "Bronx"}
+    },
+    {
+        $unwind: "$grades" 
+    },
+    {
+      $group: {
+        _id: "$_id",
+        avgScore: { $avg: "$grades.score" },
+        nome : { $first: "$nome" },
+        gastronomia : { $first: "$gastronomia"}
+      }
+    },
+    {
+      $sort: {
+        avgScore: -1
+      }
+    },
+    {
+      $limit: 1
+    },
+    {
+      $project: {
+        _id: 0,
+        avgScore: 1,
+        nome: 1
+      }
+    }
+])
+
+Resultado:
+[
+  {
+    "avgScore": 19.166666666666668,
+    "nome": "Lopez'S Pizzeria And Coffee Shop"
+  }
+]
+
+
+// 29. Indique qual o restaurante que foi avaliado mais recentemente em Manhattan
+
+db.restaurants.find(
+    { localidade: "Manhattan" }, 
+    { nome: 1, "grades.date": 1, _id: 0 } 
+).sort({ "grades.date": -1 }).limit(1)  
+
+Resultado:
+[
+  {
+    "grades": [
+      {
+        "date": {
+          "$date": "2015-01-17T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2014-01-08T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2013-07-30T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2012-11-15T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2012-06-08T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2012-05-24T00:00:00Z"
+        }
+      },
+      {
+        "date": {
+          "$date": "2012-01-18T00:00:00Z"
+        }
+      }
+    ],
+    "nome": "Cafe Un Deux Trois"
+  }
+]
+
+// 30. Indique o nome, gastronomia e localidade dos top 5 restaurantes (com maior média de score).
+
+db.restaurants.aggregate([
+    {
+        $unwind: "$grades" 
+    },
+    {
+      $group: {
+        _id: "$_id",
+        avgScore: { $avg: "$grades.score" },
+        nome : { $first: "$nome" },
+        gastronomia : { $first: "$gastronomia"},
+        localidade: { $first: "$localidade"}
+      }
+    },
+    {
+      $sort: {
+        avgScore: -1
+      }
+    },
+    {
+      $limit: 5
+    },
+    {
+      $project: {
+        _id: 0,
+        avgScore: 1,
+        nome: 1,
+        gastronomia: 1,
+        localidade: 1
+      }
+    }
+])
+
+Resultado:
+[
+  {
+    "avgScore": 38.6,
+    "nome": "Bella Napoli",
+    "gastronomia": "Pizza/Italian",
+    "localidade": "Manhattan"
+  },
+  {
+    "avgScore": 36,
+    "nome": "West 79Th Street Boat Basin Cafe",
+    "gastronomia": "American",
+    "localidade": "Manhattan"
+  },
+  {
+    "avgScore": 33.666666666666664,
+    "nome": "Murals On 54/Randolphs'S",
+    "gastronomia": "American",
+    "localidade": "Manhattan"
+  },
+  {
+    "avgScore": 32.6,
+    "nome": "Live Bait Bar & Restaurant",
+    "gastronomia": "American",
+    "localidade": "Manhattan"
+  },
+  {
+    "avgScore": 32.142857142857146,
+    "nome": "Nanni Restaurant",
+    "gastronomia": "Italian",
+    "localidade": "Manhattan"
   }
 ]

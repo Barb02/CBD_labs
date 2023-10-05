@@ -250,7 +250,7 @@ db.restaurants.aggregate([
 // 25
 db.restaurants.aggregate([
     {
-        $unwind: "$grades" // separar cada elemento do array em um objeto (unwind é mais eficiente q o metodo anterior nesse caso)
+        $unwind: "$grades" 
     },
     {
         $match: {
@@ -278,3 +278,105 @@ db.restaurants.aggregate([
       }
     }
   ])
+
+// 26
+db.restaurants.aggregate([
+    {
+        $match: { 
+            localidade: "Brooklyn"
+        }
+    },
+    {
+        $group: {
+          _id: "$gastronomia",
+          num: {$sum: 1}
+        }
+    }
+])
+
+
+// 27
+db.restaurants.find(
+    {
+        "address.coord.0": {$gt: -73.9, $lt: -73},
+        "address.coord.1": {$gt: 40.5, $lt: 41},
+        $or: [{ nome: {$regex: "food"} }, { nome: {$regex: "Food"}}]
+    },
+    {_id: 0, nome:1, address: 1}
+).sort({"address.building": 1})
+
+
+// 28
+db.restaurants.aggregate([
+    {
+        $match: { gastronomia: "Pizza/Italian", localidade: "Bronx"}
+    },
+    {
+        $unwind: "$grades" 
+    },
+    {
+      $group: {
+        _id: "$_id",
+        avgScore: { $avg: "$grades.score" },
+        nome : { $first: "$nome" },
+        gastronomia : { $first: "$gastronomia"}
+      }
+    },
+    {
+      $sort: {
+        avgScore: -1
+      }
+    },
+    {
+      $limit: 1
+    },
+    {
+      $project: {
+        _id: 0,
+        avgScore: 1,
+        nome: 1
+      }
+    }
+])
+
+
+// 29
+
+db.restaurants.find(
+    { localidade: "Manhattan" }, 
+    { nome: 1, "grades.date": 1, _id: 0 } 
+).sort({ "grades.date": -1 }).limit(1)  
+  
+
+// 30
+db.restaurants.aggregate([
+    {
+        $unwind: "$grades" 
+    },
+    {
+      $group: {
+        _id: "$_id",
+        avgScore: { $avg: "$grades.score" },
+        nome : { $first: "$nome" },
+        gastronomia : { $first: "$gastronomia"},
+        localidade: { $first: "$localidade"}
+      }
+    },
+    {
+      $sort: {
+        avgScore: -1
+      }
+    },
+    {
+      $limit: 5
+    },
+    {
+      $project: {
+        _id: 0,
+        avgScore: 1,
+        nome: 1,
+        gastronomia: 1,
+        localidade: 1
+      }
+    }
+])
