@@ -83,6 +83,14 @@ public class Restaurants
                     Projections.excludeId());
 
             findDocuments(collection, filterFind, projectionFields, null);
+
+            // Delete created documetns
+            Bson query = Filters.eq("nome", "DaniPizza");
+            collection.deleteOne(query);
+            query = Filters.eq("nome", "FroYoYo");
+            collection.deleteOne(query);
+            query = Filters.eq("nome", "Nova Casa");
+            collection.deleteOne(query);
         }
     }
 }
