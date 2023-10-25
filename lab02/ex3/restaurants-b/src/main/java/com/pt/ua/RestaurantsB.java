@@ -5,20 +5,14 @@ import org.bson.conversions.Bson;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Projections;
-import com.mongodb.client.model.Sorts;
-import com.mongodb.client.model.UpdateOptions;
-import com.mongodb.client.model.Updates;
-import com.mongodb.client.result.InsertManyResult;
-import com.mongodb.client.result.UpdateResult;
 
 import java.sql.Timestamp;
 
-public class App 
+public class RestaurantsB 
 {
     private static void findDocuments(MongoCollection<Document> collection, Bson filter, Bson projection, Bson sort){
 

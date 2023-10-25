@@ -1,0 +1,2 @@
+Redis:
+Não precisa checar se key (user_key) ja existe, ele substitui os valores (cada key é única)

@@ -16,7 +16,7 @@ public class SistemaAtendimento
     {
         Jedis jedis = new Jedis();
         Scanner sc = new Scanner(System.in);
-        Calendar cal = Calendar.getInstance();
+        Calendar cal;
         
         System.out.print("Type in your username: ");
         String USER_KEY = sc.nextLine();
@@ -28,6 +28,7 @@ public class SistemaAtendimento
 
         while( ! (product = sc.nextLine()).isEmpty() ){
 
+            cal = Calendar.getInstance(); 
             currDate = cal.getTime();
             timestamp = currDate.getTime();
             jedis.zremrangeByScore(USER_KEY, 0, timestamp - TIMESLOT);

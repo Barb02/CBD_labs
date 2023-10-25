@@ -21,7 +21,7 @@ import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.InsertManyResult;
 import com.mongodb.client.result.UpdateResult;
 
-public class App 
+public class RestaurantsC 
 {
     private static void findDocuments(MongoCollection<Document> collection, Bson filter, Bson projection, Bson sort){
 
