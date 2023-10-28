@@ -1,5 +1,12 @@
 use("sistema-atendimento");
 
-//db.users.deleteOne({"user": "maria"})
+//db.users.deleteMany({"user": "maria"})
 
-db.users.find()
+//db.quantity.deleteMany({"user": "joao"})
+
+// db.users.find()
+
+//db.quantity.find()
+
+
+db.users.dropIndex("timestamp_1")

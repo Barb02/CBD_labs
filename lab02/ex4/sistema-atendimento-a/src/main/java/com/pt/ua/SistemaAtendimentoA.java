@@ -1,11 +1,10 @@
 package com.pt.ua;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.Date;
-import java.util.Calendar;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
@@ -13,10 +12,13 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.IndexOptions;
+import com.mongodb.client.model.Indexes;
 
-public class SistemaAtendimento 
+
+public class SistemaAtendimentoA 
 {
-    private final static long TIMESLOT = 60000; // 1 minute
+    private final static long TIMESLOT = 60; // 1 minute
     private final static int REQUESTS_LIMIT = 5;
 
     public static void main( String[] args )
@@ -26,29 +28,17 @@ public class SistemaAtendimento
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("sistema-atendimento");
             MongoCollection<Document> collection = database.getCollection("users");
+            collection.createIndex(Indexes.ascending("timestamp"), new IndexOptions().expireAfter(TIMESLOT, TimeUnit.SECONDS));
 
-            Scanner sc = new Scanner(System.in);
-            Calendar cal;
-            
+            Scanner sc = new Scanner(System.in);            
             System.out.print("Type in your username: ");
             String user = sc.nextLine();
                 
             System.out.print("\nType in your product request ('Enter' to quit): ");
 
             String product;
-            Date currDate;
-            long currTs;
 
             while( ! (product = sc.nextLine()).isEmpty() ){
-                cal = Calendar.getInstance();
-                currDate = cal.getTime();
-                currTs = currDate.getTime();
-
-                System.out.println(currTs);
-
-                Bson query = Filters.and(Filters.eq("user", user), Filters.lte("timestamp", currTs - TIMESLOT));
-                collection.deleteOne(query);
-
                 long count = collection.countDocuments(Filters.eq("user", user));
 
                 if(count < REQUESTS_LIMIT){
@@ -56,7 +46,7 @@ public class SistemaAtendimento
                         .append("_id", new ObjectId())
                         .append("product", product)
                         .append("user", user)
-                        .append("timestamp", currTs));
+                        .append("timestamp", new Date()));
                 }
                 else{
                     System.err.println("Maximum number of requests reached for this user! Closing session...");
