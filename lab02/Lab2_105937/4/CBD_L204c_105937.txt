@@ -1,0 +1,32 @@
+a)
+Para a solução em Redis, utilizei um sorted set para cada user e utilizei a função de remover um range
+por score para remover os produtos que já haviam passado da janela temporal. Essa função é chamada sempre
+antes de verificar se o número de produtos era menor que a quantidade permitida, e é necessário fazer a
+subtração do timestamp atual pela janela temporal definida. Já no Mongo, utilizei a lógica de um documento por
+produto, e em cada documento adicionei também o timestamp e o user que fez a requisição. Para remover conforme
+a janela temporal, defini um index TTL, que remove automaticamente um documento baseado no campo passado como
+argumento, nesse caso o timestamp.
+Dessa forma, o Mongo trouxe a desvantagem da repetição de informação ao criar vários produtos com o mesmo user, 
+mas trouxe a vantagem de não ter que remover manualmente os produtos expirados a cada iteração. Porém, após
+criar essa solução em Redis tive conhecimento de outra simplementação que removeria essa desvanatgem de remover
+manualmente, que seria a utilização direta das keys para os produtos, e assim com o TTL estas seriam
+removidas automaticamente. 
+
+b)
+Já com a introdução da quantidade de produtos ao problema, na solução em Redis utilizei mais uma estrutura, 
+um hashmap, a fim de registrar a quantidade requisitada para cada produto. Ou seja, para cada utilizador são criadas
+duas estruturas, um sorted set e um hashmap. Por outro lado, na solução em Mongo, apenas foi necessário adicionar
+um campo "quantidade" aos documentos, e atualiza-lo a cada inserção. Portanto, a solução em Mongo tornou-se mais
+simples e não obrigou a criação de uma nova estrutura de dados para manter a quantidade, mas manteve sua
+desvanatgem da repetição de informação.
+
+Em geral, concluí-se que a solução em Mongo se adequa mais ao problema no sentido em que sua implementação é
+mais simples, porém a estrutura do Redis tem uma menor "impendance mismatch" por permitir que os produtos sejam
+agregados por utilizador, o que elimina a duplicação de informação.
+
+Em termos de desempenho de I/O, ambas as soluções obtiveram resultados semelhantes, visto que a quantidade de
+dados é pequena. Porém, em situações que envolvam mais documentos/valores, é notável a vantagem do Redis, o que
+pode ser justificado pela sua característica de manter seus dados in-memory, ao contrário do Mongo. Portanto,
+no caso de um sistema de atendimento que recebesse uma grande quantidade de pedidos de vários utilizadores
+simultaneamente, a melhor opção seria utilizar Redis, pois além de ser mais rápida em geral, como evitaria a
+duplicação de informação, tornaria a leitura mais rápida.

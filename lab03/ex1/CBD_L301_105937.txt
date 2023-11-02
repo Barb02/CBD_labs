@@ -1,0 +1,38 @@
+// Operações de teste no cql shell. Operações usadas são as do quickstart presente no site do Cassandra. 
+
+// Criar keyspace (~database)
+cqlsh> CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : '1' };
+
+// Criar tabela. userid é o partition key, e não foi definido um cluster key.
+cqlsh> CREATE TABLE IF NOT EXISTS store.shopping_cart (
+   ... userid text PRIMARY KEY,
+   ... item_count int,
+   ... last_update_timestamp timestamp
+   ... );
+
+// Inserir valores
+cqlsh> INSERT INTO store.shopping_cart
+   ... (userid, item_count, last_update_timestamp)
+   ... VALUES ('9876', 2, toTimeStamp(now()));
+cqlsh> INSERT INTO store.shopping_cart
+   ... (userid, item_count, last_update_timestamp)
+   ... VALUES ('1234', 5, toTimeStamp(now()));
+
+// Verificar se os valores foram inseridos
+cqlsh>  SELECT * FROM store.shopping_cart;
+
+ userid | item_count | last_update_timestamp
+--------+------------+---------------------------------
+   1234 |          5 | 2023-11-02 10:17:04.203000+0000
+   9876 |          2 | 2023-11-02 10:17:02.643000+0000
+
+(2 rows)
+
+// Testar SELECT com WHERE
+cqlsh>  SELECT * FROM store.shopping_cart WHERE userid = '1234';
+
+ userid | item_count | last_update_timestamp
+--------+------------+---------------------------------
+   1234 |          5 | 2023-11-02 10:17:04.203000+0000
+
+(1 rows)
