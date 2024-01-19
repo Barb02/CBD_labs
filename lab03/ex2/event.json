@@ -1,0 +1,72 @@
+[
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:07.107",
+    "trigger": "stop",
+    "videotime": "00:22:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:07.082",
+    "trigger": "pause",
+    "videotime": "00:21:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:07.017",
+    "trigger": "pause",
+    "videotime": "00:20:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.994",
+    "trigger": "pause",
+    "videotime": "00:19:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.953",
+    "trigger": "pause",
+    "videotime": "00:18:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.935",
+    "trigger": "pause",
+    "videotime": "00:17:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.889",
+    "trigger": "pause",
+    "videotime": "00:16:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.828",
+    "trigger": "pause",
+    "videotime": "00:15:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.769",
+    "trigger": "pause",
+    "videotime": "00:14:54.000000000"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "triggeredat": "2023-11-29 22:54:06.722",
+    "trigger": "play",
+    "videotime": "00:12:54.000000000"
+  }
+]

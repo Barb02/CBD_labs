@@ -1,0 +1,65 @@
+// NMEC: 105937
+
+# 1.
+match (m:Movie)-[:DIRECTED]-(p:Person)-[:ACTED_IN]->(m:Movie) return p.name, m.title
+
+# 2.
+match (p:Person)-[:ACTED_IN]->(m:Movie) where m.released > 2005 return distinct p.name
+
+# 3. 
+match (n)-[]-(m)-[]-(n) return n
+
+# 4.
+match (p1:Person)-[:REVIEWED]->(m:Movie)<-[:REVIEWED]-(p2:Person) where elementId(p1) > elementId(p2) return p1.name, p2.name, m.title
+
+# 5.
+match (m2:Movie)<-[:ACTED_IN]-(p1:Person)-[:ACTED_IN]->(m1:Movie)<-[:ACTED_IN]-(p2:Person)-[:ACTED_IN]->(m2:Movie)  return p1, p2, m1, m2
+
+# 6.
+match (p1:Person)-[:ACTED_IN]->(m1:Movie {title:"Apollo 13"}) return avg(m1.released - p1.born)
+
+# 7.
+match (p1:Person)-[:ACTED_IN]->(m1:Movie) return m1.title, round(avg(m1.released - p1.born),2) as avg_age order by avg_age desc limit 10
+
+# 8.
+match (p1:Person)-[:ACTED_IN]->(m1:Movie) return m1, collect(p1), avg(m1.released - p1.born) as avg_age order by avg_age limit 1
+
+#9.
+match p=shortestPath((p1:Person {name:"John Cusack"})-[*]-(p2:Person {name:"Demi Moore"})) return p
+
+# 10.
+match p=shortestPath((p1:Person {name:"Keanu Reeves"})-[*]-(p2:Person {name:"Tom Cruise"})) return length(p) 
+
+# 11.
+match p=shortestPath((p1:Person)-[*]-(p2:Person)) where p1.name CONTAINS "Jim" and p2.name CONTAINS "Kevin" return min(length(p))
+
+# 12.
+match (p1:Person {name: "Jim Cash"}), (p2:Person) where p1 <> p2 and length(shortestPath((p1)-[*]-(p2)))=2 return p2
+
+# 13.
+match p=shortestPath((p1:Person {name:"Kevin Bacon"})-[*]-(p2:Person)) where p1 <> p2 return length(p) order by length(p) desc limit 1
+
+# 14. 
+match p=shortestPath((p1:Person)-[*]-(p2:Person)) where p1 <> p2 return length(p) order by length(p) desc limit 1
+
+# 15.
+match p=shortestPath((p1:Person)-[*]-(p2:Person)) where p1 <> p2 return length(p), count(length(p)) order by length(p)
+
+# 16.
+match p=shortestPath((p1:Person)-[:ACTED_IN*]-(p2:Person)) where p1 <> p2 return p1,p2,avg(length(p)) order by avg(length(p)) limit 10
+
+# 17.
+match (p1:Person)-[a:ACTED_IN]-(m1:Movie) where any(role in a.roles where role starts with 'Dr.') 
+return p1.name as Ator, collect(a.roles) as ListaDasRoles
+
+# 18. Indique o nome da pessoa que produziu mais filmes e o número de filmes de produzidos correspondente
+match (p:Person)-[:PRODUCED]-(m:Movie) return p.name, count(m) order by count(m) desc limit 1]
+
+# 19. Indique o nome do ator com o maior número de roles distintos
+match (p1:Person)-[a:ACTED_IN]-(m1:Movie) unwind a.roles as roles
+return p1.name, count(distinct roles) order by count(distinct roles) desc limit 1
+
+# 20. Indique o caminho entre "James Thompson" e "Paul Blythe" com o máximo de 4 hops
+match p=shortestPath((p1:Person {name:"James Thompson"})-[:FOLLOWS*1..4]-(p2:Person {name: "Paul Blythe"})) where p1 <> p2 return p
+
+

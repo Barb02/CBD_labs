@@ -1,0 +1,27 @@
+// NMEC: 105937
+
+4.3)
+b)
+LOAD CSV WITH HEADERS FROM 'file:///git_selection.csv' AS row 
+MERGE (p: Person {svn_id: row.svn_id, name: row.real_name})
+MERGE (pr: Project {name: row.project_name, organization: row.organization})
+MERGE (p)-[:WORKS_ON {role_on_project: row.role_on_project, num:row.num}]->(pr)
+
+c)
+1. match (p:Person) return p.name, p.svn_id
+
+2. match (p:Person) return distinct p.name 	// existem várias pessoas (diferentes) com o mesmo nome, por isso o distinct
+
+3. match (p:Person)-[:WORKS_ON]->(pr:Project) return distinct pr.name, pr.organization
+
+4. match (p:Person)-[:WORKS_ON]->(pr:Project) return p.svn_id, count(pr) as num_projects
+
+5. match (p:Person)-[:WORKS_ON]->(pr:Project) return p.svn_id, count(pr) as num_projects order by num_projects desc
+
+6. match (p:Person)-[:WORKS_ON]->(pr:Project) return pr.name, count(p) as num_members
+
+7. match (p:Person)-[w:WORKS_ON]->(pr:Project) where w.role_on_project="Committer" return pr.name, count(p) as num_members
+
+8. match (p:Person {svn_id: "atm"})-[w:WORKS_ON]->(pr:Project)<-[:WORKS_ON]-(p2:Person) return p.name, p2.name, pr.name
+
+9.match (p:Person {svn_id: "atm"})-[:WORKS_ON {role_on_project:"PMC"}]->(pr:Project)<-[:WORKS_ON {role_on_project:"Committer"}]-(p2:Person) return p2.svn_id, p2.name

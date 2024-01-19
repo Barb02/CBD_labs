@@ -1,0 +1,74 @@
+[
+  {
+    "userid": "8c310f1e-8fa2-4715-bc6c-13342cb97662",
+    "email": "alice.johnson@ua.com",
+    "nome": "Alice Johnson",
+    "registeredat": "2023-03-20 15:45:00.000",
+    "username": "alice8"
+  },
+  {
+    "userid": "987f44be-3a06-4a95-9dad-d5db3a17b7cb",
+    "email": "john.doe@gmail.com",
+    "nome": "John Doe",
+    "registeredat": "2023-01-01 12:00:00.000",
+    "username": "doejohn"
+  },
+  {
+    "userid": "4dd23557-3a6c-40b9-a632-1bad4d2fd3db",
+    "email": "jane.smith@ua.com",
+    "nome": "Jane Smith",
+    "registeredat": "2023-02-15 09:30:00.000",
+    "username": "jane"
+  },
+  {
+    "userid": "6daa90a3-12a8-4bcc-a28e-282f63132e37",
+    "email": "jojo@ua.pt",
+    "nome": "Jojo",
+    "registeredat": "2023-11-29 22:54:04.780",
+    "username": "JojoASMR"
+  },
+  {
+    "userid": "b6cf68c0-40f7-4d99-88be-8c0c40645034",
+    "email": "abc@ua.pt",
+    "nome": "Dimitri",
+    "registeredat": "2023-11-29 22:54:04.753",
+    "username": "MassageASMR"
+  },
+  {
+    "userid": "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+    "email": "joao@ua.pt",
+    "nome": "Joao",
+    "registeredat": "2023-11-29 22:54:04.652",
+    "username": "Joao123"
+  },
+  {
+    "userid": "f05ced00-5d44-47b2-9e45-700e97587f51",
+    "email": "malena0202@gmail.com",
+    "nome": "Malena Nunes",
+    "registeredat": "2023-11-29 22:54:04.854",
+    "username": "malena0202"
+  },
+  {
+    "userid": "c97a497b-1dea-468b-ba68-5731eb35deb8",
+    "email": "bob.mark@gmail.com",
+    "nome": "Bob Mark",
+    "registeredat": "2023-04-10 17:20:00.000",
+    "username": "bob10"
+  },
+  {
+    "userid": "b4aab076-29c5-4db1-bdac-6ad7f83243a8",
+    "email": "joe@ua.pt",
+    "nome": "Joe",
+    "registeredat": "2023-11-29 22:54:04.878",
+    "username": "JoeMoe"
+  },
+  {
+    "userid": "3f6930f7-a09c-4c54-8617-872040d0208f",
+    "email": "mj@ua.pt",
+    "nome": "MariaJoaquina",
+    "registeredat": "2023-11-29 22:54:04.704",
+    "username": "Maria123"
+  }
+]
+
+

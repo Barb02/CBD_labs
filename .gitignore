@@ -10,5 +10,10 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-# VsCode
+# VsCode and Intellij
 .vscode
+.idea
+
+# Misc
+*.zip
+*.csv

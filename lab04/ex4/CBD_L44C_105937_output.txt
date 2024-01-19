@@ -1,0 +1,142 @@
+// 1. List the top 10 most liked tracks:
+Query: "MATCH (t:Track) RETURN t.title AS title, t.likes AS likes ORDER BY t.likes DESC LIMIT 10"
+Result:
+Title - Likes
+Despacito - 50788626
+lovely (with Khalid) - 24425840
+Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] (feat. Freshlyground) - 20327883
+Dusk Till Dawn (feat. Sia) - Radio Edit - 14149628
+Hymn for the Weekend - 13515772
+Con Calma - 13036596
+Calma - Remix - 12824730
+Love The Way You Lie - 12696568
+Chandelier - 12476394
+Numb - 12341722
+
+// 2. List the channels that uploaded unofficial videos for tracks with more than 100k likes (along with the track):
+Query: "MATCH (t:Track)-[:UPLOADED_AT]-(ch:Channel) WHERE t.official_video=false AND t.likes > 100000 RETURN t.title AS title, ch.name AS channel"
+Result:
+Title - Channel
+Whiskey In The Jar - Warner Records Vault
+The Unforgiven (Remastered) - Warner Records Vault
+Get Lucky (feat. Pharrell Williams & Nile Rodgers) - Radio Edit - convar HUN
+Get Lucky (feat. Pharrell Williams & Nile Rodgers) - convar HUN
+Smooth Criminal - 2012 Remaster - vman
+Godzilla (feat. Juice WRLD) - Lyrical Lemonade
+Color Esperanza 2020 - Latin Waves
+Always On My Mind - Amelia Hops
+Hit 'Em Up - Single Version - Seven Hip-Hop
+California Love - Original Version - UPROXX Video
+Riders On The Storm - Fredwreck Remix - WeipwnsallXD
+That's Life - Georgia Rainbow
+Numb / Encore - Neil Collins
+Run This Town - Kayser926
+CUFF IT - RENAISSANCE CLUB
+Gasolina - Motonymous
+Tu Príncipe - Gianluca Vargas Gonzalez
+Lemonade (feat. Gunna  Don Toliver & NAV) - Lyrical Lemonade
+Be Our Guest - disneysongsnet
+Una Mattina - Beatriz
+Mountains - Jennyni20 (Epic Music)
+Could You Be Loved - Reggae Life
+Is This Love - Reggae Life
+No Woman  No Cry - Live At The Lyceum  London/1975 - Reggae Life
+
+// 3. List the top 10 artists with more likes in their tracks:
+Query: "MATCH (t:Track)-[:CREATED_BY]-(a:Artist) RETURN a.name AS artist, sum(t.likes) AS likes ORDER BY likes DESC LIMIT 10"
+Result:
+Artist - Total likes
+Daddy Yankee - 65518171
+Eminem - 65513534
+Coldplay - 63157895
+Shakira - 55963035
+Sia - 52376096
+Khalid - 46881447
+Farruko - 39097556
+Michael Jackson - 37419432
+Linkin Park - 36180884
+Black Eyed Peas - 30524509
+
+// 4. List the tracks (and their respective artist) with the number of likes being 5% of the number of views or higher:
+Query: "MATCH (t:Track)-[:CREATED_BY]-(a:Artist) WHERE t.views > 0 AND t.likes >= 0.05 * t.views RETURN a.name AS artist, t.likes AS likes, t.views AS views, t.title AS track"
+Result:
+Artist - Track - Views - Likes
+Metallica - Screaming Suicide - 4317758.0 - 217109
+Snoop Dogg - Bad Decisions (with BTS & Snoop Dogg) - 4.8725891E7 - 2843117
+
+// 5. List the total number of singles by artist ordered in descending order:
+Query: "MATCH (al:Album)<-[:BELONGS_TO]-(t:Track)-[:CREATED_BY]-(a:Artist) WHERE al.type = 'single' RETURN a.name AS artist, COUNT(al) AS numberOfSingles ORDER BY numberOfSingles DESC"
+Result:
+Artist - Number of Singles
+Tiësto - 9
+Farruko - 5
+Snoop Dogg - 5
+Pharrell Williams - 4
+Khalid - 4
+Camilo - 4
+Chris Brown - 4
+Gorillaz - 3
+P!nk - 3
+Shakira - 3
+Nicky Jam - 3
+Wisin & Yandel - 3
+Tory Lanez - 3
+Metallica - 2
+Sean Paul - 2
+Daddy Yankee - 2
+Don Toliver - 2
+A.R. Rahman - 2
+Shreya Ghoshal - 2
+50 Cent - 1
+Daft Punk - 1
+Linkin Park - 1
+JAY-Z - 1
+Black Eyed Peas - 1
+Machine Gun Kelly - 1
+Lil Wayne - 1
+Sia - 1
+Elton John - 1
+Beyoncé - 1
+Britney Spears - 1
+Disney - 1
+Aerosmith - 1
+blink-182 - 1
+
+// 6. List the top 5 singles with more views:
+Query: "MATCH (al:Album)<-[:BELONGS_TO]-(t:Track) WHERE al.type = 'single' RETURN al.title AS single, sum(t.views) AS views ORDER BY views DESC LIMIT 5"
+Result:
+Single - Number of views
+Con Calma - 2.626439287E9
+lovely (with Khalid) - 1.721382178E9
+Si Se da Remix - 1.202913849E9
+Diles - 9.86386304E8
+Sucker for Pain (with Logic & Ty Dolla $ign feat. X Ambassadors) - 7.88318126E8
+
+// 7. List the top 5 albums with more views:
+Query: "MATCH (al:Album)<-[:BELONGS_TO]-(t:Track) WHERE al.type = 'album' RETURN al.title AS album, sum(t.views) AS views ORDER BY views DESC LIMIT 5"
+Result:
+Album - Number of views
+VIDA - 8.079646911E9
+Recovery - 4.26639817E9
+1000 Forms Of Fear (Deluxe Version) - 3.842800158E9
+Get Rich Or Die Tryin' - 3.199725819E9
+Fénix - 2.9277054E9
+
+// 8. Calculate the average number of likes for the artist 'Gorillaz':
+Query: "MATCH (t:Track)-[:CREATED_BY]-(a:Artist {name: 'Gorillaz'}) RETURN avg(t.likes) AS avgLikes"
+Result:
+Avg likes
+1956852.7
+
+// 9. Calculate the percentage of tracks that have/are an official video:
+Query: "MATCH (t:Track) RETURN (count(CASE WHEN t.official_video = true THEN 1 ELSE null END) * 100.0 / count(t)) AS percentage"
+Result:
+Percentage of tracks with official video
+80.76923076923077%
+
+// 10. Calculate the number of tracks with duration greater or equal than 5 minutes with more than 1 million views:
+Query: "MATCH (t:Track) WHERE t.duration >= 5 AND t.views > 1000000 RETURN count(t) AS numberOfTracks"
+Result:
+Number of tracks
+67
+

@@ -1,0 +1,109 @@
+[
+  {
+    "videoid": "fa75053a-ae53-42a6-bb4d-dcf177f443fe",
+    "sharedat": "2023-11-29 22:54:05.386",
+    "descr": "Sleep, sleep, sleep...",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Meditation", "Sleep"],
+    "title": "Meditation"
+  },
+  {
+    "videoid": "09d90e4c-2e6c-403e-95f3-8aa41c2d0fe4",
+    "sharedat": "2023-11-29 22:54:05.145",
+    "descr": "Fortaleza is the best, I miss my hometown",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Brasil", "Fortaleza"],
+    "title": "Fortaleza city"
+  },
+  {
+    "videoid": "b5905fbd-65ec-4049-8634-db16392e4fd5",
+    "sharedat": "2023-11-29 22:54:05.426",
+    "descr": "Yum",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Food"],
+    "title": "Top 5 best foods"
+  },
+  {
+    "videoid": "725c96d7-d749-4377-a419-0382eba85b86",
+    "sharedat": "2023-11-29 22:54:05.466",
+    "descr": "Jumpscare alert",
+    "followers": [
+      "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Scary", "Spiders"],
+    "title": "Spiders are scary"
+  },
+  {
+    "videoid": "15ea291a-6a10-4223-88c8-99ff563c56b2",
+    "sharedat": "2023-11-29 22:54:05.025",
+    "descr": "Aveiro is pretty",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51"
+    ],
+    "tags": ["Aveiro", "Portugal"],
+    "title": "Aveiro city"
+  },
+  {
+    "videoid": "33d76130-f5d1-46a5-8f9c-3629a5eead70",
+    "sharedat": "2023-11-29 22:54:05.059",
+    "descr": "Lontras are cool",
+    "followers": [
+      "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Animals", "Lontras"],
+    "title": "Lontras swimming"
+  },
+  {
+    "videoid": "87d3a138-75ea-4a5f-9e79-b8d685baed42",
+    "sharedat": "2023-11-29 22:54:05.088",
+    "descr": "Porto is pretty",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51"
+    ],
+    "tags": ["Porto", "Portugal"],
+    "title": "Porto city"
+  },
+  {
+    "videoid": "94aa70b3-521c-4c87-99cd-56916c6f220f",
+    "sharedat": "2023-11-29 22:54:05.118",
+    "descr": "Braga is nice",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51"
+    ],
+    "tags": ["Braga", "Portugal"],
+    "title": "Braga city"
+  },
+  {
+    "videoid": "ef50064e-1cfb-45fa-96eb-c95cb562c7c6",
+    "sharedat": "2023-11-29 22:54:04.994",
+    "descr": "Capybaras are cool",
+    "followers": [
+      "f34c8c5b-c539-46a5-868b-7182fb5143ed",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Animals", "Capybaras"],
+    "title": "Capybaras swimming"
+  },
+  {
+    "videoid": "366eb8f6-0aed-4202-9248-b4538192e9a8",
+    "sharedat": "2023-11-29 22:54:05.331",
+    "descr": "São Paulo is the worse and has the worse people",
+    "followers": [
+      "f05ced00-5d44-47b2-9e45-700e97587f51",
+      "3f6930f7-a09c-4c54-8617-872040d0208f"
+    ],
+    "tags": ["Brasil", "São Paulo"],
+    "title": "São Paulo is hell"
+  }
+]
